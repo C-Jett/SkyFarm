@@ -5,6 +5,8 @@ A simple farm application that implements pre-built farms into a JavaFX view. Me
 Instead of just forking the project I added various changes including importing the project into Maven. To preserve the project we
 turned in I created this new repository.
 
+Link: https://gitlab.cs.uab.edu/acagee/CS_420_Team_Project
+
 ## Contributions
 The following people contributed various amounts to the project in our class.
 * Adam Agee
