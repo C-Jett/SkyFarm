@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+    <children>
+        <SplitPane dividerPositions="0.3812615955473098" orientation="VERTICAL" prefHeight="574.0" prefWidth="998.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <children>
+                        <SplitPane dividerPositions="0.14056224899598393, 0.32831325301204817" prefHeight="250.0" prefWidth="977.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <items>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="419.0" prefWidth="260.0">
+                                    <children>
+                                        <TreeView id="treeItem" fx:id="tree" onMouseClicked="#selectItem" prefHeight="419.0" prefWidth="253.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    </children>
+                                </AnchorPane>
+                        <AnchorPane prefHeight="353.0" prefWidth="160.0">
+                           <children>
+                              <TextArea fx:id="commandLog" editable="false" prefHeight="419.0" prefWidth="236.0" text="Command Log:&#10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="419.0" prefWidth="737.0">
+                                    <children>
+                                        <Text layoutX="109.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose an item container on the left to add or edit the element" wrappingWidth="751.1367492675781">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                        </Text>
+                                        <TextField fx:id="nameBox" layoutX="42.0" layoutY="73.0" onAction="#sendName" promptText="Name" />
+                                        <TextField fx:id="priceBox" layoutX="42.0" layoutY="102.0" onAction="#sendPrice" promptText="Price" />
+                                        <TextField fx:id="marketPriceBox" layoutX="42.0" layoutY="132.0" onAction="#sendMarketPrice" promptText="Market Price" />
+                                        <ColorPicker fx:id="colorPicker" layoutX="231.0" layoutY="73.0" onAction="#setColor" prefHeight="25.0" prefWidth="149.0" />
+                                        <CheckBox fx:id="containerCheck" layoutX="231.0" layoutY="111.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="149.0" text="Item Container" />
+                                        <TextField layoutX="42.0" layoutY="185.0" onAction="#setXCoord" promptText="X-Coordinate" fx:id="xCoord" />
+                                        <TextField fx:id="lenBox" layoutX="42.0" layoutY="220.0" onAction="#setLen" promptText="Length" />
+                                        <TextField fx:id="yCoord" layoutX="231.0" layoutY="185.0" onAction="#setYCoord" promptText="Y-Coordinate" />
+                                        <TextField fx:id="widthBox" layoutX="231.0" layoutY="220.0" onAction="#setWidth" promptText="Width" />
+                                        <Button fx:id="newButton" layoutX="432.0" layoutY="100.0" mnemonicParsing="false" onAction="#addNewItem" prefHeight="16.0" prefWidth="99.0" text="Add New" />
+                                        <Button fx:id="confirmButton" layoutX="432.0" layoutY="135.0" mnemonicParsing="false" onAction="#confirmEdit" prefHeight="26.0" prefWidth="99.0" text="Confirm Edit" />
+                                        <Button fx:id="removeButton" layoutX="432.0" layoutY="168.0" mnemonicParsing="false" onAction="#removeItem" prefHeight="26.0" prefWidth="99.0" text="Remove Item" />
+                                        <Button fx:id="undoButton" layoutX="541.0" layoutY="135.0" mnemonicParsing="false" onAction="#undoCommand" prefHeight="26.0" prefWidth="99.0" text="Undo" />
+                                        <Button fx:id="redoButton" layoutX="541.0" layoutY="168.0" mnemonicParsing="false" onAction="#redoCommand" prefHeight="26.0" prefWidth="99.0" text="Redo" />
+                                        <Text layoutX="180.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coordinates" />
+                                        <Text layoutX="158.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="General Information" />
+                                        <Separator layoutY="28.0" prefHeight="8.0" prefWidth="591.0" />
+                                        <TextArea fx:id="currentPrice" editable="false" layoutX="42.0" layoutY="249.0" prefHeight="17.0" prefWidth="149.0" />
+                                        <TextArea fx:id="CurrentMarketValue" editable="false" layoutX="43.0" layoutY="291.0" prefHeight="0.0" prefWidth="149.0" />
+                                        <Button fx:id="updateCountButton" layoutX="432.0" layoutY="268.0" mnemonicParsing="false" onAction="#updateCount" prefHeight="25.0" prefWidth="99.0" text="Update Count" />
+                                        <TextArea fx:id="itemCountBox" editable="false" layoutX="431.0" layoutY="214.0" prefHeight="28.0" prefWidth="200.0" />
+                                        <Button fx:id="ImportFarm" layoutX="541.0" layoutY="102.0" mnemonicParsing="false" onAction="#ImportFarm" prefHeight="25.0" prefWidth="99.0" text="Import Farm" />
+                                    </children>
+                                </AnchorPane>
+                            </items>
+                        </SplitPane>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <children>
+                        <SplitPane dividerPositions="0.02023121387283237" orientation="VERTICAL" prefHeight="274.0" prefWidth="977.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <items>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="45.0" prefWidth="996.0">
+                                    <children>
+                                        <TextArea editable="false" prefHeight="45.0" prefWidth="996.0" text="Map Of SkyFarm Location and Farm Objects&#10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                        </TextArea>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                    <children>
+                                        <GridPane fx:id="farmGrid" prefHeight="238.0" prefWidth="975.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columnConstraints><ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+
+                                            </rowConstraints>
+                                            <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                            </padding>
+                                        </GridPane>
+                                    </children>
+                                </AnchorPane>
+                            </items>
+                        </SplitPane>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>
